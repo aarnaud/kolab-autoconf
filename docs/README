@@ -1,0 +1,34 @@
+INTO
+----
+
+Autodiscover service implements automatic account configuration for email
+and ActiveSync clients.
+
+* Outlook
+
+http://msdn.microsoft.com/en-us/library/cc463896%28v=exchg.80%29.aspx
+
+* Activesync
+
+http://msdn.microsoft.com/en-us/library/ee200809%28v=exchg.80%29.aspx
+
+* Mozilla (Evolution/KMail/Kontact)
+
+https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration
+
+
+CONFIGURATION
+-------------
+
+1. Apache
+
+# for https://domain.tld (and https://autodiscover.domain.tld)
+Alias /autodiscover/autodiscover.xml /usr/share/kolab-autodiscover/public_html
+Alias /Autodiscover/Autodiscover.xml /usr/share/kolab-autodiscover/public_html
+Alias /AutoDiscover/AutoDiscover.xml /usr/share/kolab-autodiscover/public_html
+# for http://autoconfig.domain.tld
+Alias /mail/config-v1.1.xml /usr/share/kolab-autodiscover/public_html
+# for http://domain.tld
+Alias /.well-known/autoconfig/mail/config-v1.1.xml /usr/share/kolab-autodiscover/public_html
+
+2. Add [autodiscover] section in /etc/kolab/kolab.conf (see sample kolab.conf.sample)

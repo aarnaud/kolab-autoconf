@@ -1,0 +1,153 @@
+[22-Apr-2014 19:37:48 +0200]: [DEBUG] Request [microsoft]: 
+[22-Apr-2014 19:39:23 +0200]: [DEBUG] Request [microsoft]: 
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Request [mozilla]: {"emailaddress":"a.machniak@klab.cc"}
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: Connect [localhost:389]
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] S: OK
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: Bind [dn: uid=kolab-service,ou=Special Users,dc=kolabsys,dc=net] [pass: nVx74D-9nEos9oi]
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] S: OK
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: Search base dn: [cn=kolab,cn=config] scope [sub] with filter [(&(&(associatedDomain=*))(associateddomain=klab.cc))]
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] No VLV information available yet, refreshing
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Existing vlv index and search information
+array (
+  'ou=Groups,dc=klab,dc=cc' => 
+  array (
+    'scope' => 'sub',
+    'filter' => '(|(objectclass=groupofuniquenames)(objectclass=groupofurls))',
+    'sort' => 
+    array (
+      0 => 
+      array (
+        0 => 'cn',
+      ),
+    ),
+  ),
+  'ou=People,dc=klab,dc=cc' => 
+  array (
+    'scope' => 'sub',
+    'filter' => '(objectclass=inetorgperson)',
+    'sort' => 
+    array (
+      0 => 
+      array (
+        0 => 'displayname',
+        1 => 'sn',
+        2 => 'givenname',
+        3 => 'cn',
+      ),
+    ),
+  ),
+)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] No VLV for base dn
+cn=kolab,cn=config
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Using function ldap_search on scope sub ($ns_function is ldap_search)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: (Without VLV) Setting a filter of (&(&(associatedDomain=*))(associateddomain=klab.cc))
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Executing search with return attributes: array (
+  0 => 'associateddomain',
+)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: Search base dn: [dc=klab,dc=cc] scope [sub] with filter [(&(|(mail=a.machniak@klab.cc)(mail=a.machniak@klab.cc)(alias=a.machniak@klab.cc)(alias=a.machniak@klab.cc)(uid=a.machniak@klab.cc))(objectclass=inetorgperson))]
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Existing vlv index and search information
+array (
+  'ou=Groups,dc=klab,dc=cc' => 
+  array (
+    'scope' => 'sub',
+    'filter' => '(|(objectclass=groupofuniquenames)(objectclass=groupofurls))',
+    'sort' => 
+    array (
+      0 => 
+      array (
+        0 => 'cn',
+      ),
+    ),
+  ),
+  'ou=People,dc=klab,dc=cc' => 
+  array (
+    'scope' => 'sub',
+    'filter' => '(objectclass=inetorgperson)',
+    'sort' => 
+    array (
+      0 => 
+      array (
+        0 => 'displayname',
+        1 => 'sn',
+        2 => 'givenname',
+        3 => 'cn',
+      ),
+    ),
+  ),
+)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] No VLV for base dn
+dc=klab,dc=cc
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Using function ldap_search on scope sub ($ns_function is ldap_search)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] C: (Without VLV) Setting a filter of (&(|(mail=a.machniak@klab.cc)(mail=a.machniak@klab.cc)(alias=a.machniak@klab.cc)(alias=a.machniak@klab.cc)(uid=a.machniak@klab.cc))(objectclass=inetorgperson))
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Executing search with return attributes: array (
+  0 => 'mail',
+  1 => 'cn',
+)
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Array
+(
+    [email] => a.machniak@klab.cc
+    [domain] => klab.cc
+    [displayName] => Kolab Groupware
+    [displayShortName] => Kolab
+    [login] => machniak@klab.cc
+    [username] => Aleksander Machniak
+    [imap] => Array
+        (
+            [hostname] => imap.klab.cc
+            [port] => 993
+            [socketType] => SSL
+            [username] => machniak@klab.cc
+            [authentication] => password-cleartext
+        )
+
+    [pop3] => Array
+        (
+            [hostname] => pop3.klab.cc
+            [port] => 995
+            [socketType] => SSL
+            [username] => machniak@klab.cc
+            [authentication] => password-cleartext
+        )
+
+    [smtp] => Array
+        (
+            [hostname] => smtp.klab.cc
+            [port] => 465
+            [socketType] => SSL
+            [username] => machniak@klab.cc
+            [authentication] => password-cleartext
+        )
+
+    [activesync] => machniak.klab.cc
+)
+
+[23-Apr-2014 09:00:51 +0200]: [DEBUG] Response [mozilla]: <?xml version="1.0" encoding="UTF-8"?>
+<clientConfig version="1.1">
+  <emailProvider id="klab.cc">
+    <domain>klab.cc</domain>
+    <displayName>Kolab Groupware</displayName>
+    <displayShortName>Kolab</displayShortName>
+    <incomingServer type="imap">
+      <hostname>imap.klab.cc</hostname>
+      <port>993</port>
+      <socketType>SSL</socketType>
+      <username>machniak@klab.cc</username>
+      <authentication>password-cleartext</authentication>
+    </incomingServer>
+    <incomingServer type="pop3">
+      <hostname>pop3.klab.cc</hostname>
+      <port>995</port>
+      <socketType>SSL</socketType>
+      <username>machniak@klab.cc</username>
+      <authentication>password-cleartext</authentication>
+    </incomingServer>
+    <outgoingServer type="smtp">
+      <hostname>smtp.klab.cc</hostname>
+      <port>465</port>
+      <socketType>SSL</socketType>
+      <username>machniak@klab.cc</username>
+      <authentication>password-cleartext</authentication>
+    </outgoingServer>
+  </emailProvider>
+</clientConfig>
+
