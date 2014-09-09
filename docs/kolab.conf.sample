@@ -15,10 +15,10 @@ service_name = Kolab Groupware
 service_short = Kolab
 
 ; enables HTTP/LDAP debugging
-debug_mode = trace
+;debug_mode = trace
 
 [ldap]
-service_bind_dn = uid=kolab-service,ou=Special Users,dc=kolabsys,dc=net
+service_bind_dn = uid=kolab-service,ou=Special Users,dc=example,dc=org
 service_bind_pw = Welcome2KolabSystems
 domain_name_attribute = associateddomain
 domain_filter         = (&(associatedDomain=*))
