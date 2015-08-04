@@ -1,0 +1,54 @@
+<VirtualHost *:80>
+	ServerName autodiscover-mx3.pp-nt.net
+	ServerAlias autoconfig.* autodiscover.*
+	ServerAdmin support@pp-nt.com
+
+	# Force all requests to lowercase. Different MUAs, mobile devices etc
+	# request the Autodiscover URL in different cases.
+	RewriteEngine On
+	RewriteMap lc int:tolower
+	RewriteCond %{REQUEST_URI} !^/Microsoft
+	RewriteCond %{REQUEST_URI} [A-Z]
+	RewriteRule (.*) ${lc:$1} [R=301,L]
+
+	RewriteRule     ^/$     /mail/config-v1.1.xml [R,L]
+
+	# for https://domain.tld (and https://autodiscover.domain.tld)
+	Alias /autodiscover/autodiscover.xml /usr/share/kolab-autodiscover/public_html/index.php
+
+	# for http://autoconfig.domain.tld
+	Alias /mail/config-v1.1.xml /usr/share/kolab-autodiscover/public_html/index.php
+
+	ErrorLog /var/log/apache2/access_discover.log
+	CustomLog /var/log/apache2/error_discover.log combined
+
+</VirtualHost>
+
+
+<VirtualHost *:443>
+	ServerName autodiscover-mx3.pp-nt.net
+	ServerAdmin support@pp-nt.com
+
+	SSLEngine on
+	SSLCertificateFile      /etc/apache2/ssl/autodiscover-mx3.pp-nt.net.crt
+	SSLCertificateKeyFile   /etc/apache2/ssl/autodiscover-mx3.pp-nt.net.key
+
+	# Force all requests to lowercase. Different MUAs, mobile devices etc
+	# request the Autodiscover URL in different cases.
+	RewriteEngine On
+	RewriteMap lc int:tolower
+	RewriteCond %{REQUEST_URI} !^/Microsoft
+	RewriteCond %{REQUEST_URI} [A-Z]
+	RewriteRule (.*) ${lc:$1} [R=301,L]
+
+	# for https://domain.tld (and https://autodiscover.domain.tld)
+	Alias /autodiscover/autodiscover.xml /usr/share/kolab-autodiscover/public_html/index.php
+
+	# for http://autoconfig.domain.tld
+	Alias /mail/config-v1.1.xml /usr/share/kolab-autodiscover/public_html/index.php
+
+	ErrorLog /var/log/apache2/access_discover.log
+	CustomLog /var/log/apache2/error_discover.log combined
+
+</VirtualHost>
+

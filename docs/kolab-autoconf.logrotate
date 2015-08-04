@@ -1,0 +1,7 @@
+/var/log/kolab-autodiscover/console /var/log/kolab-autodiscover/errors  {
+  compress
+  missingok
+  notifempty
+  rotate 12
+  weekly
+}
