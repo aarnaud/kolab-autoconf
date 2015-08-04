@@ -52,16 +52,14 @@ class AutodiscoverMicrosoft extends Autodiscover
         // parse XML
         try {
             $xml = new SimpleXMLElement($post);
-	    Log::debug(print_r($xml, true));
+            Log::debug(print_r($xml, true));
 
-	foreach($xml->getDocNamespaces() as $strPrefix => $strNamespace) {
-	    if(strlen($strPrefix)==0) {
-		$strPrefix="a"; //Assign an arbitrary namespace prefix.
-	    }
-	    $xml->registerXPathNamespace($strPrefix,$strNamespace);
-	}
-
-
+            foreach($xml->getDocNamespaces() as $strPrefix => $strNamespace) {
+                if(strlen($strPrefix)==0) {
+                    $strPrefix="a"; //Assign an arbitrary namespace prefix.
+                }
+                $xml->registerXPathNamespace($strPrefix,$strNamespace);
+            }
 
             if ($email = $xml->xpath('//a:EMailAddress')) {
                 $this->email = (string) array_shift($email);
